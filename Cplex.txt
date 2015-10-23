@@ -1,0 +1,20 @@
+Faute d'IDE opl, j'utlise cplex depuis la ligne de commande ce qui me prends un temps fou pour rentrer les données de chaque instance. 
+Néanmoins j'ai testé sur certaines instances et j'obtiens les mêmes résultats mmais avec un temps très supérieur. 
+Le problème KNP rentré sur cplex est le suivant : 
+
+dans le .dat:
+P=["profits des items"];
+W=["poids des items"];
+N="nombre d'item";
+fullW="capacité du sac-à-dos";
+
+dans le .mod:
+dvar int+ x[1..N];
+objectif: maximize (sum (i in 1..N)(x[i]*P[i]));
+
+subject to{
+	forall (i in 1..N){
+	       x[i] <= 1;
+	}
+	(sum (i in 1..N)(W[i]*x[i]) <= fullW;
+};
