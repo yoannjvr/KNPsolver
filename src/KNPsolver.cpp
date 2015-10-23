@@ -154,6 +154,7 @@ void KNPsolver::BABsolver(InstanceGen* I, Solution* sol) {
     std::cout << "computedByGreedy? " << computedByGreedy << "\n";
 }
 
+//LP resolution
 double KNPsolver::LPsolver(InstanceGen* I, Solution* sol, int index, double currentW) {
     std::vector<Item*>::iterator iteItem = (I->profitOnWeightVector().begin());
     int i = 0;
@@ -174,6 +175,8 @@ double KNPsolver::LPsolver(InstanceGen* I, Solution* sol, int index, double curr
     return sol->solValue();
 }
 
+
+//Resolution by a greedy resolution
 void KNPsolver::greedySolver(InstanceGen* I, Solution * greedySol) {
     for (std::vector<Item*>::iterator iteItem = (I->profitOnWeightVector().begin()); iteItem != I->profitOnWeightVector().end(); iteItem++) {
         //std::cout << ((*iteItem)->weight()) << " + " << (greedySol->solWeight()) << " = " << (((*iteItem)->weight()) + (greedySol->solWeight())) << " <=" << (I->W()) << "? " << ((((*iteItem)->weight()) + (greedySol->solWeight())) <= (I->W())) << "\n";
@@ -182,6 +185,7 @@ void KNPsolver::greedySolver(InstanceGen* I, Solution * greedySol) {
     }
 }
 
+//Resolution by a dynamic program with a core
 int KNPsolver::Dynamic(InstanceGen* I) {
     Solution* LPSol = new Solution();
     LPsolver(I, LPSol, 0, 0.0);
