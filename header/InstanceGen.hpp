@@ -17,15 +17,17 @@
 
 class InstanceGen{
 public: 
-	//c=correlation
+	//c=correlation, w=weight, n=number of items
 	InstanceGen(double w, double n, double c);
 	~InstanceGen();
 	std::vector<Item*>& itemsVector();
+	//Returns the wieght of the knapsack
 	double W();
+	//Returns the number of items in the instance
 	double numOfItems();
         std::vector<Item*>& profitOnWeightVector();
 private:
-        std::vector<Item*> _profitOnWeightVector;
+    std::vector<Item*> _profitOnWeightVector;
 	std::vector<Item*> _items;
 	double _fullW; 
 	double _numOfItems;

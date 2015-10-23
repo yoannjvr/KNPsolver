@@ -10,10 +10,13 @@
 
 #include "InstanceGen.hpp"
 
+	// Incumbent
 	extern double INC;
 
+	//Upper Bound
 	extern double UB; 
 
+	//lower Bound
 	extern double LB;
 
 #endif	/* GLOBALVAR_HPP */
